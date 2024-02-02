@@ -132,19 +132,19 @@ In stap 1 t/m 4 gebruik je de features voor foutafhandeling in Power Query. Vana
 
 In een voorgaande opdracht haalde je informatie uit een samengestelde kolom door gebruik te maken van de **Split Column by Delimiter** transformatie. 
 In deze opdracht ga je een veel voorkomende uitdaging uitwerken: betekenisvolle data halen uit ongestructureerde tekst. 
-Deze uitdaging kan eenvoudig  zijn als je data redelijk consistent is, maar je hebt een breder arsenaal aan technieken nodig voor inconsistente data.
+Deze uitdaging kan eenvoudig zijn als je data redelijk consistent is, maar je hebt een breder arsenaal aan technieken nodig voor inconsistente data.
 
 In deze opdracht willen we de hyperlinks uit een dataset van Facebook posts extraheren. Sommige hyperlinks zijn makkelijk te herkennen doordat ze beginnen met "http://", maar er zijn ook veel afwijkende waarden die niet eenvoudig te adresseren zijn.
 
-1. Start een nieuw Power BI rapport en lees workbook **L2O5.xlsx** uit **Lab 2** in als Excel workbook en start de Power Query Editor.
+1. Voeg bestand **L2O5.xlsx** toe als query en selecteer de **[Table]**.
 
 2. Selecteer de kolom **Message**, dupliceer het en hernoem de nieuwe kolom tot "Hyperlink" (zonder quotes).
 
     > Om de hyperlink uit de nieuwe kolom te extraheren kunnen we de prefix "http://" gebruiken als scheidingsteken en de kolom splitsen. 
 
-3. Selecteer de **Hyperlink** kolom, open op de **Transform** tab het **Split Column** dropdown menu en selecteer **By Delimiter**.
+3. Selecteer de **Hyperlink** kolom, open op de **Transform** tab het **Split Column** dropdown menu, selecteer **By Delimiter** en selecteer **Advanced**.
 
-4. Vul onder **Custom** de waarde "http://" (zonder quotes) in. Selecteer de **Left-most delimiter** en klik op OK.
+4. Kies de **Custom** Separator met de waarde "http://" (zonder quotes) in. Selecteer de **Left-most delimiter** en klik op OK.
 
     > De kolom **Hyperlink** is nu gesplitst in tweeën, maar nog niet alle hyperlinks worden herkend. Hoe kun je hyperlinks extraheren die beginnen met "https://" of "www."?
 
@@ -159,9 +159,9 @@ In deze opdracht willen we de hyperlinks uit een dataset van Facebook posts extr
 
 7. Ga naar de laatste stap in het *Applied Steps* paneel. Selecteer de kolom **Hyperlink.2** en splits het met de spatie als scheidingsteken op de **Left-most delimiter**.
 
-8. Verwijder kolom **Hyperlink.2.2**.
+8. Verwijder kolom **Hyperlink.4**.
 
-    > Bekijk de resultaten in de kolom **Hyperlink.2.1**. Zoek de eerste rij met een lege waarde, waarin de hyperlink dus nog niet goed wordt herkend. 
+    > Bekijk de resultaten in de kolom **Hyperlink.3**. Zoek de eerste rij met een lege waarde, waarin de hyperlink dus nog niet goed wordt herkend. 
     > Het blijkt de hyperlink "aka.ms/containersebook" te zijn. Gebruiken we echter "aka.ms" als scheidingsteken, dan verliezen we waardevolle informatie in de hyperlink.
     > Bij "www." verloren we ook informatie, maar dat is een ingecalculeerd risico, omdat de hyperlinks "www.microsoft.com" en "microsoft.com" naar dezelfde website verwijzen.
     > Je moet een manier vinden om te splitsen op "aka.ms" en dan het domein te herstellen, maar alleen voor de relevante rijen.
@@ -171,7 +171,7 @@ In deze opdracht willen we de hyperlinks uit een dataset van Facebook posts extr
 
     > Het resultaat voor rij 29 is nu de hyperlink "/containersebook". In de volgende stappen voeg je een **Conditional Column** toe die het domein hersteld als de waarde van de hyperlink begint met "/".
 
-10. Ga terug naar de laatste stap in het *Applied Steps* paneel. Verwijder kolom **Hyperlink.1** en hernoem kolom **Hyperlink.2.1** naar **Hyperlink Old**.
+10. Ga terug naar de laatste stap in het *Applied Steps* paneel. Verwijder kolom **Hyperlink.1** en hernoem kolom **Hyperlink.3** naar **Hyperlink Old**.
 
 11. Selecteer op de **Add Column** tab **Conditional Column**. Vul de dialoog die opent als volgt:
 
@@ -212,10 +212,9 @@ In deze opdracht willen we de hyperlinks uit een dataset van Facebook posts extr
 
     > Standaard verwijderd **Trim** spaties van het begin en eind van een tekst. Je kunt het ook manipuleren om interpunctie aan het eind te verwijderen.
     > Hiervoor moet je wat aanpassingen doorvoeren in de formule. Die bevat nu de functie **Text.Trim**. Die functie accepteer als tweede argument een lijst met tekst items. 
-    > Met accolades ({}) kunnen we de lijst opstellen: {".",",",")"}. Om deze lijst als tweede argument mee te geven, moet je ook het eerste argument aanleveren, de tekst in de **Hyperlink** kolom.
-    > Om deze tekst te geven kun je een combinatie van keyword **each** en de underscore (_) gebruiken.
+    > Met accolades ({}) kunnen we de lijst opstellen: {".",",",")"}. Voeg deze lijst als tweede argument toe achter **Text.From(_)**
 
-21. Vervang in de *Formula bar* de tekst `Text.Trim` door `each Text.Trim(_,{".",",",")"})`.
+21. Vervang in de *Formula bar* de tekst `Text.Trim(Text.From(_))` door `Text.Trim(Text.From(_), {".",",",")"})`.
 
     > Merk in rij 174 het laatste issue op. De hyperlink eindigt in een nieuwe regel, gevolgd door meer tekst. Bij het toepassen van de tweede **Split Column by Delimiter** aan de hand van een spatie, werd de hyperlink niet goed verwerkt. 
 
@@ -238,7 +237,7 @@ In deze opdracht willen we de hyperlinks uit een dataset van Facebook posts extr
 
     > Deze stap is cruciaal, anders wordt de prefix in alle rijen verwijderd.
 
-28. Klik op OK en selecteer **Close & Apply** om de berichten en hun hyperlinks in het rapport te laden.
+28. Klik op OK en koppel het aan een Data destination in jouw Lakehouse, bijvoorbeeld **L2O5_hyperlinks**.
 
     > Je hebt nu het gros van de uitdagingen in deze dataset verholpen en de gevraagde hyperlinks beschikbaar gesteld. 
     > Er zijn nog een paar hyperlinks die niet goed worden verwerkt. Kun jij ze vinden?
