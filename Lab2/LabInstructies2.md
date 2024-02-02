@@ -10,9 +10,9 @@ In dit tweede lab leer je Power Query in te zetten om basale uitdagingen in data
 
 ## Opdracht 1 - Betekenis halen uit gecodeerde kolommen
 
-1. Maak een nieuwe dataflow en lees bestand **L2O1.xlsx** in. Je kan onder **Get data** je eerdere Lakehouse connectie hergebruiken. Rechtsklik op de naam in de Query en klik op **Duplicate**. Herhaal dit nogmaals. 
+1. Maak een nieuwe dataflow en lees bestand **L2O1.xlsx** in. Je kan onder **Get data** je eerdere Lakehouse connectie hergebruiken. Rechtsklik op de naam in de Query en klik op **Duplicate**. Herhaal dit nog twee keer. 
 
-2. Selecteer nu bij elk van de drie queries een andere **[Table]** en pas de naam van de query aan (gebruik de waarde uit de kolom **Name**).
+2. Selecteer nu bij de eerste drie queries een andere **[Table]** en pas de naam van de query aan (gebruik de waarde uit de kolom **Name**). De vierde query heb je in Opdracht 3 pas nodig.
 
 3. Selecteer de **Products** query en merk op dat de eerste rij de kolomkoppen bevat. Selecteer in de tab **Transform** de transformatie **Use First Row as Headers** om dit op te lossen. Werk je liever met shortcuts dan kun je ook in het *Preview* paneel in de linkerbovenhoek op het tabelicoontje klikken en vervolgens **Use First Row as Headers** selecteren.
 
@@ -65,7 +65,7 @@ Je kunt hierdoor nieuwe kolommen aan jouw queries toevoegen door simpelweg één
 
 In opdracht 1 heb je het Product Number gesplitst in vier elementen. Stel nu dat je alleen de Product Size uit de samengestelde code wil halen. 
 
-1. Start een nieuw Power BI rapport en lees workbook **L2O1.xlsx** uit **Lab 2** in als Excel workbook.
+1. Hernoem de vierde query tot **Products (2)** en selecteer de **[Table]** van Products.
 
     > In het *Preview* paneel zien we dat de kolom **Product Number** bestaat uit 4 door streepjes gescheiden codes. De uitdaging is om de derde code, die staat voor **Product Size** eruit te halen.
 
@@ -79,7 +79,7 @@ In opdracht 1 heb je het Product Number gesplitst in vier elementen. Stel nu dat
 
 5. Klik op Ctrl+Enter of OK om de kolom aan te maken. Het *Preview* paneel laat de nieuwe kolom zien, gevuld zoals verwacht. 
 
-    > In het **Applied Steps** paneel staat de stap die de kolom toevoegt: **Inserted Text Between Delimiters**. Zonder kennis van deze transformatie heb je het kunnen gebruiken. Nu je het hier ziet kun je het ook in het lint opzoeken (staat onder de **Transform** tab) en onderzoeken hoe het werkt.<br />
+    > In het **Applied Steps** paneel staat de stap die de kolom toevoegt: **Inserted Text Between Delimiters**. Zonder kennis van deze transformatie heb je het kunnen gebruiken. Nu je het hier ziet kun je het ook in het lint opzoeken (staat onder de **Add column** tab onder **Extract**) en kijken of je hetzelfde kunt bereiken.<br />
 
 ## Opdracht 4 - Afleiden van buckets/bereik
 
@@ -116,7 +116,7 @@ In stap 1 t/m 4 gebruik je de features voor foutafhandeling in Power Query. Vana
 
     > In het vervolg van deze opdracht maken we een aparte tabel voor producten met numerieke maten en classificeren we ze in 4 buckets door gebruik te maken van **Column from Examples**.
 
-12. Rechtsklik in het *Queries* paneel op **Products** en selecteer **Reference**. Hernoem de nieuw toegevoegde query tot "Numeric-Size Products". Dit kan door te dubbelklikken op de query, rechtsklikken en **Rename** te selecteren of door de Name aan te passen in het *Query Settings* paneel onder **Properties**.
+12. Rechtsklik in het *Queries* paneel op **Products (2)** en selecteer **Reference**. Hernoem de nieuw toegevoegde query tot "Numeric-Size Products". Dit kan door te dubbelklikken op de query, rechtsklikken en **Rename** te selecteren of door de Name aan te passen in het *Query Settings* paneel onder **Properties**.
 
     > Het gebruik van Reference is een handige techniek voor het aanmaken van vertakkingen van een brontabel en maakt een nieuwe tabel aan die start vanaf de laatste stap van de query waaraan wordt gerefereerd. 
 
