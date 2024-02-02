@@ -10,23 +10,23 @@ In dit tweede lab leer je Power Query in te zetten om basale uitdagingen in data
 
 ## Opdracht 1 - Betekenis halen uit gecodeerde kolommen
 
-1. Maak een nieuwe dataflow en lees bestand **L2O1.xlsx** in. Je kan onder **Get data** je eerdere Lakehouse connectie hergebruiken.
+1. Maak een nieuwe dataflow en lees bestand **L2O1.xlsx** in. Je kan onder **Get data** je eerdere Lakehouse connectie hergebruiken. Rechtsklik op de naam in de Query en klik op **Duplicate**. Herhaal dit nogmaals. 
 
-2. Selecteer in het **Navigator** scherm dat opent de tabellen **Categories**, **Colors** en **Products** en selecteer **Transform Data**. Check dat je in het *Queries* paneel dat opent de drie queries kan zien en bekijk de preview.
+2. Selecteer nu bij elk van de drie queries een andere **[Table]** en pas de naam van de query aan (gebruik de waarde uit de kolom **Name**).
 
-3. Selecteer de **Categories** query en merk op dat de eerste rij de kolomkoppen bevat. Selecteer in de tab **Transform** de transformatie **Use First Row as Headers** om dit op te lossen. Werk je liever met shortcuts dan kun je ook in het *Preview* paneel in de linkerbovenhoek op het tabelicoontje klikken en vervolgens **Use First Row as Headers** selecteren.
+3. Selecteer de **Products** query en merk op dat de eerste rij de kolomkoppen bevat. Selecteer in de tab **Transform** de transformatie **Use First Row as Headers** om dit op te lossen. Werk je liever met shortcuts dan kun je ook in het *Preview* paneel in de linkerbovenhoek op het tabelicoontje klikken en vervolgens **Use First Row as Headers** selecteren.
 
-4. Herhaal stap 3 voor de **Colors** query.
+4. Herhaal stap 3 voor de andere twee queries.
 
-5. Selecteer in de **Products** query de **Product Number** kolom door op de kolomkop te klikken of door onder de **Home** tab onder het dropdown menu **Choose columns** de optie **Go to Column** te selecteren en de kolom **Product Code** te kiezen.
+5. Selecteer in de **Products** query de **Product Number** kolom door op de kolomkop te klikken of door onder de **Home** tab onder het dropdown menu **Choose columns** de optie **Go to Column** te selecteren en de kolom **Product Number** te kiezen.
 
 6. Selecteer onder de **Transform** tab het dropdown menu **Split Column** en selecteer **By Delimiter**. Hetzelfde kun je doen door te rechtsklikken op de kolomkop **Product Number** en vervolgens **Split Column** en **By Delimiter** te kiezen.
 
-7. De default instellingen zijn correct voor het splitsen van deze kolom, maar check voor je **OK** drukt nog even de instellingen. 
-	- De **Custom** optie is geselecteerd en het streepje als scheidingsteken. Power Query heeft dit goed beoordeeld op basis van de waarden in de kolom.
+7. De Basic instellingen zijn incorrect voor het splitsen van deze kolom, dus check voor je **OK** drukt de Advanced instellingen. 
+	- Selecteer de **Custom** optie en het streepje als scheidingsteken. 
 	- **Each occurence of this delimiter** is geselecteerd omdat er meerdere scheidingstekens zijn gevonden per waarde.
-	- Als je de Advanced options openklapt, zie je dat Power Query heeft gedetecteerd dat de waarde van **Product Number** in vier kolommen kan worden gesplitst.
-	- Het **Quote Character** is ook ingesteld. Scheidingstekens (in dit geval streepje) die deel zijn van een tekst en niet als scheidingstekens moeten worden behandeld kunnen met de **Quote Character** correct worden geïnterpreteerd.
+	- Power Query heeft gedetecteerd dat de waarde van **Product Number** in vier kolommen kan worden gesplitst.
+	- Het **Quote Character** is niet ingesteld. Scheidingstekens (in dit geval streepje) die deel zijn van een tekst en niet als scheidingstekens moeten worden behandeld kunnen met de **Quote Character** correct worden geïnterpreteerd.
 	
 8. Na het sluiten van de dialoog zie je de vier nieuwe kolommen (Product Number.1 t/m 4)in het *Preview* paneel. Hernoem ze tot **Category Code**, **Short Product Number**, **Size** en **Color**. <br />
 
@@ -38,11 +38,11 @@ In Opdracht 1 hebben we de codes voor Category en Color geëxtraheerd uit een sa
 
     > In de **Merge** dialoog die opent kun je twee tabellen samenvoegen op basis van overeenkomende waarden in gespecificeerde kolommen. We gaan de **Product Category Name** uit de **Categories** query opnemen in de **Products** query, aan de hand van de overeenkomende **Category Code**.
 
-2. Selecteer de **Category Code** in de **Products** tabel en selecteer in het dropdown menu **Categories**. Selecteer daarin ook **Category Code**. Check dat in de **Join Kind** gekozen is voor **Left Outer (All from first, matching from second)** en klik op OK.
+2. Selecteer de **Category Code** in de **Products** tabel en selecteer in het dropdown menu **Categories**. Selecteer daarin ook **Category Code**. Check dat in de **Join Kind** gekozen is voor **Left Outer** en klik op OK.
 
     > In het *Preview* paneel is een nieuwe **Categories** kolom toegevoegd met tabelobjecten als waarden.
 
-3. **Expand** de kolom door in de kolom op de twee pijltjes te klikken. Verwijder in de **Expand** dialoog de vinkjes voor **Category Code** en **Use original column name as prefix** en klik op OK. De **Categories** kolom is vervangen door een nieuwe kolom **Product Category Name** met de overeenkomende waarden in elke rij.
+3. **Expand** de kolom door in de kolom op de twee pijltjes te klikken. Verwijder in de **Expand** dialoog het vinkje voor **Category Code** en klik op OK. De **Categories** kolom is vervangen door een nieuwe kolom **Product Category Name** met de overeenkomende waarden in elke rij.
 
 4. Nu je de **Product Category Name** ter beschikking hebt, kun je de **Category Code** verwijderen door de kolom te selecteren en op de Delete toets te drukken.
 
@@ -52,11 +52,11 @@ In Opdracht 1 hebben we de codes voor Category en Color geëxtraheerd uit een sa
 
     > Nu we de inhoud van de **Categories** en **Colors** queries hebben overgenomen zijn de queries overbodig geworden en hoeven ze niet meer te worden geladen.
 
-6. Rechtsklik in het *Queries* paneel op de **Categories** query en verwijder het vinkje **Enable Load**. Herhaal dit voor de **Colors** query.
+6. Rechtsklik in het *Queries* paneel op de **Categories** query en verwijder het vinkje **Enable staging**. Herhaal dit voor de **Colors** query.
 
-    > Stap 6 stelt je in staat queries als opstapjes te gebruiken voor andere queries en zorgt ervoor dat ze niet in het Power BI rapport worden geladen.
+    > Stap 6 stelt je in staat queries als opstapjes te gebruiken voor andere queries en zorgt ervoor dat ze niet worden geladen. In de tab *View* kun je dit in de **Diagram view** terugzien.
 
-7. Op het **Home** tab, klik op **Close & Apply**. Maak ter verificatie een column chart met **Color** op de X-as en een count van **Product** op de Y-as.<br />
+7. Geef de dataflow een toepasselijke **Data destination** in jouw Lakehouse, bijvoorbeeld **L2O1_Products**. Sommige kolomnamen bevatten spaties wat niet wordt geaccepteerd. Kies voor **Fix it** om die te laten vervangen door underscores.<br />
 
 ## Opdracht 3 - Kolommen uit voorbeelden
 
