@@ -54,11 +54,13 @@ In dit eerste lab importeer je de eerste data als query en passen we eenvoudige 
 
 ## Opdracht 3 - De data bewerken
 
-1. Open het bronbestand **L1O1.xlsx** en doe wat aanpassingen. Open, nadat je de file hebt bijgewerkt, jouw dataflow en kijk hoe jouw query omgaat met de gewijzigde data. Om de query te verversen, selecteer **Refresh** in de **Home** tab. Dit is de kern van automatisering en een tijdbesparend element in Power Query. Je kunt de data eenmalig prepareren en dan een refresh starten om de data automatisch te prepareren op elk moment.
+1. Open  het bronbestand **L1O1.xlsx** en doe wat aanpassingen. Navigeer naar jouw lakehouse, klik onder **Files** bij **Source** op de ellipsis (drie puntjes) en kies **Upload > Upload files**. Upload de file en overschrijf het origineel.
+
+2. Open, nadat je de file hebt bijgewerkt, jouw dataflow en kijk hoe jouw query omgaat met de gewijzigde data. Om de query te verversen, selecteer **Refresh** in de **Home** tab. Dit is de kern van automatisering en een tijdbesparend element in Power Query. Je kunt de data eenmalig prepareren en dan een refresh starten om de data automatisch te prepareren op elk moment.
 
     > Je kunt de verversing van de data ook periodiek inplannen, door bij de dataflow in jouw workspace naar **Schedule refresh** te gaan (wacht tot de publish gelukt is). 
 
-2. Selecteer een van de bestaande stappen in **Applied Steps**, pas het aan of verwijder ze en voeg nieuwe stappen toe. Om een stap toe te voegen tussen bestaande stappen, selecteer de stap waarna de nieuwe stap moet komen en selecteer een transformatiestap uit het lint of na rechtsklikken op een kolomkop.
+3. Selecteer een van de bestaande stappen in **Applied Steps**, pas het aan of verwijder ze en voeg nieuwe stappen toe. Om een stap toe te voegen tussen bestaande stappen, selecteer de stap waarna de nieuwe stap moet komen en selecteer een transformatiestap uit het lint of na rechtsklikken op een kolomkop.
 
     Je hebt nu de originele brontabel geïmporteerd en getransformeerd.
 
