@@ -50,11 +50,13 @@ In dit eerste lab importeer je de eerste data als query en passen we eenvoudige 
 
 7. Voeg tenslotte een doelbestemming toe voor jouw dataflow. Klik rechts onderin op de **+** naast **Data destination** en kies voor **Lakehouse**. Klik op **Next** en navigeer naar jouw persoonlijke **Workspace** en **Lakehouse**. Geef de doeltabel en naam, bijvoorbeeld **Lab1_Products** en Klik op **Next**. Laat de **Update method** op **Replace** staan en klik op **Save settings**.
 
+8. Klik op **Publish** om de dataflow te publiceren en af te sluiten.
+
 ## Opdracht 3 - De data bewerken
 
 1. Open het bronbestand **L1O1.xlsx** en doe wat aanpassingen. Open, nadat je de file hebt bijgewerkt, jouw dataflow en kijk hoe jouw query omgaat met de gewijzigde data. Om de query te verversen, selecteer **Refresh** in de **Home** tab. Dit is de kern van automatisering en een tijdbesparend element in Power Query. Je kunt de data eenmalig prepareren en dan een refresh starten om de data automatisch te prepareren op elk moment.
 
-    > Je kunt de verversing van de data ook periodiek inplannen, door bij de dataflow in jouw workspace naar **Schedule refresh** te gaan. Lees er meer over in de [documentatie](https://learn.microsoft.com/en-US/power-bi/connect-data/refresh-scheduled-refresh).
+    > Je kunt de verversing van de data ook periodiek inplannen, door bij de dataflow in jouw workspace naar **Schedule refresh** te gaan (wacht tot de publish gelukt is). 
 
 2. Selecteer een van de bestaande stappen in **Applied Steps**, pas het aan of verwijder ze en voeg nieuwe stappen toe. Om een stap toe te voegen tussen bestaande stappen, selecteer de stap waarna de nieuwe stap moet komen en selecteer een transformatiestap uit het lint of na rechtsklikken op een kolomkop.
 
