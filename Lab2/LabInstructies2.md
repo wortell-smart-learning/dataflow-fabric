@@ -348,7 +348,7 @@ Je krijgt hier een dataset met producten uit de AdventureWorks dataset, waarvan 
 De lijst van kleuren staat bij elk product in de kolom **Colors**, gescheiden door een komma. 
 Je gaat deze dataset splitsen in twee tabellen: één voor de producten en één voor de relatie van de producten met kleuren.
 
-1. Start een nieuw Power BI rapport, lees workbook **L2O9.xlsx** uit **Lab 2** in als Excel workbook en open het in Power Query Editor.
+1. Voeg bestand **L2O9.xlsx** toe als query, selecteer de **[Table]** van **Products** en hernoem het tot **Products (6)**.
 
 2. Rechtsklik op de query en selecteer **Reference**. Hernoem de nieuwe query tot "Products and Colors".
 
@@ -358,16 +358,14 @@ Je gaat deze dataset splitsen in twee tabellen: één voor de producten en één
 
 5. Selecteer de kolom **Colors**, open op de **Transform** tab het dropdownmenu **Split Column** en kies voor **By Delimiter**.
 
-6. Klap de **Advanced options** open, kies bij **Split into** voor **Rows** en klik op OK.
+6. Selecteer **Advanced**, kies bij **Split into** voor **Rows** en klik op OK.
 
 7. Open met kolom **Colors** geselecteerd op de **Transform** tab het dropdownmenu **Format** en selecteer **Trim**. Deze stap verwijdert overtallige spaties.
-
-8. Laad de queries in je rapport. 
 
     > Om de grootte van je rapport te beperken zou je de kolom **Colors** uit de **Products** query moeten verwijderen. 
     > Als je dat nu doet, levert dat een error op, aangezien die kolom in de referenced query **Products and Colors** wordt gebruikt. 
     > Om dit op te lossen kun je een nieuwe reference maken van **Products** en de kolom daar verwijderen. 
-    > Vervolgens kun je het laden van de basisquery naar het rapport uitzetten.<br />
+    > Vervolgens kun je het doorladen van de basisquery uitzetten.<br />
 
 ## Table of Contents
 
