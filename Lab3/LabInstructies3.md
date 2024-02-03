@@ -2,7 +2,7 @@
 
 *Vereisten*
 
-Om het lab te kunnen starten is het van belang dat je toegang hebt tot Power BI desktop.
+Om het lab te kunnen starten is het van belang dat je toegang hebt tot een workspace gekoppeld aan een Fabric capacity.
 
 *Doel*
 
@@ -10,16 +10,16 @@ In dit derde lab leer je Power Query in te zetten om data samen te voegen.
 
 ## Opdracht 1 - Samenvoegen van meerdere queries
 
-1. Start een nieuw Power BI rapport en lees workbook **L3O1 - Bikes.xlsx** uit **Lab 3** in als Excel workbook (selecteer **Load**).
+1. Maak een nieuwe dataflow en lees bestand **L3O1 - Bikes.xlsx** in als **Bikes**. 
 
-1. Lees **L3O1 - Accessories.xlsx** uit **Lab 3** in als Excel workbook en start Power Query Editor (Selecteer **Transform**).
+2. Lees **L3O1 - Accessories.xlsx** in als **Accessories**.
 
-1. Creëer een nieuwe query **Products** als reference van **Accessories**. 
+3. Creëer een nieuwe query **Products** als reference van **Accessories**. 
 
-1. Check dat de nieuwe **Products** query geselecteerd is, open in de **Home** tab het dropdown menu **Append Queries** en kies de transformatie **Append Queries**. Selecteer in de dialoog die opent in het Dropdown menu **Bikes** en klik ok OK.
+4. Check dat de nieuwe **Products** query geselecteerd is, open in de **Home** tab het dropdown menu **Append Queries** en kies de transformatie **Append Queries**. Selecteer in de dialoog die opent in het Dropdown menu **Bikes** en klik ok OK.
 
     > Laten we de M code bekijken die voor de Reference en Append stappen is gegenereerd. 
-    > Als je de stap **Source** in het *Applied Steps* paneel bekijkt zie je daar de code `= Accessories`.
+    > Als je de stap **Source** in het *Applied Steps* paneel bekijkt zie je daar de code `Accessories`.
     > Deze code staat voor de output van de query **Accessories**, het gevolg van de Reference transformatie.
     > Als je in de **home** tab de **Advanced Editor** selecteert zie je daar de volgende code:
     ```
@@ -30,15 +30,15 @@ In dit derde lab leer je Power Query in te zetten om data samen te voegen.
         #"Appended Query"
     ```
     > Je ziet de twee stappen terug die we hebben toegevoegd, de Reference en de Append. 
-    > Voor de Append transformatie heeft Power Query de MM functie Table.Combine gebruikt, die de twee andere queries samenvoegt.
+    > Voor de Append transformatie heeft Power Query de M functie Table.Combine gebruikt, die de twee andere queries samenvoegt.
     > Deze functie accepteert een lijst van queries (te zien aan de accolades) als input.
     > Hetzelfde kun je voor elkaar krijgen door in het dropdown menu **Append Queries** te kiezen voor **Append Queries as New**.
 
-1. Klik op **Close & Apply**, importeer **L3O1 - Clothing.xlsx** en **L3O1 - Components.xlsx** als nieuwe queries en start de Power Query Editor.
+5. Lees **L3O1 - Clothing.xlsx** en **L3O1 - Components.xlsx** als nieuwe queries en hernoem ze tot **Clothing** en **Components**.
 
-1. Selecteer query **Products**, open de **Advanced Editor** en breidt de lijst van tabellen in de functie `Table.Combine` uit met de nieuwe queries. De nieuwe code ziet er dan als volgt uit: `Table.Combine({Source, Bikes, Clothing, Components})`.
+6. Selecteer query **Products**, open de **Advanced Editor** en breidt de lijst van tabellen in de functie `Table.Combine` uit met de nieuwe queries. De nieuwe code ziet er dan als volgt uit: `Table.Combine({Source, Bikes, Clothing, Components})`.
 
-1. Sluit de Advanced Editor en check het resultaat van de querystap door te kijken of de vier categorieën beschikbaar zijn in de filter control in de kolomkop van de kolom **ParentProductCategoryName**.<br />
+7. Sluit de Advanced Editor en check het resultaat van de querystap door te kijken of de vier categorieën beschikbaar zijn in de filter control in de kolomkop van de kolom **ParentProductCategoryName**.<br />
 
 ## Opdracht 2 - Samenvoegen van files uit een folder
 
