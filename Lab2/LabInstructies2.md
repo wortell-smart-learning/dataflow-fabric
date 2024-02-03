@@ -250,7 +250,7 @@ Tekstkolommen zijn eenvoudig, maar numerieke en datumkolommen kunnen complex zij
 Je begint met het converteren van tekst naar datums en vervolgt met het omgaan met foutieve datums.
 Tenslotte leer je hoe specifieke datum- en tijdselementen uit datum/tijd waarden te extraheren.
 
-1. Start een nieuw Power BI rapport.
+1. Voeg bestand **L2O6.xlsx** toe als query en selecteer de **[Table]** en hernoem het tot **Products (3)**.
 
     > Dit workbook bevat de productcatalogus van AdventureWorks met in de laatste kolom de **Release Date**.
     > Alleen hebben de verschillende data entry teams deze datums in vijf verschillende formats ingevoerd.
@@ -261,26 +261,21 @@ Tenslotte leer je hoe specifieke datum- en tijdselementen uit datum/tijd waarden
     > 1 July, 2018
     > Je krijgt de data in de regionale setting voor English/United States aangeleverd en zal hiermee rekening moeten houden.
 
-2. Ga in de **File** tab naar **Options and settings** en dan naar **Options** en pas onder de **CURRENT FILE** de **Regional Settings** aan naar "English (United States)".
+2. Selecteer de stap **Changed column type** in het paneel **Applied Steps** en bekijk de inhoud van de kolom **Release Date**. Selecteer nu de laatste stap, **Changed column type**, die het datatype in de kolommen detecteerd. Check of alle rijen dezelfde datum laten zien.
 
-3. Lees workbook **L2O6.xlsx** uit **Lab 2** in als Excel workbook en start Power Query Editor.
-
-4. Pas het datatype van kolom **Release Date** aan naar **Date**. Check of alle rijen dezelfde datum laten zien.
-
-    > Power Query converteert automatisch de verschillende datum formats naar het nieuwe datatype bij de juiste regionale instellingen.
-
-5. Sluit Power Query Editor en laadt de data naar het rapport.<br />
+    > Power Query converteert automatisch de verschillende datum formats naar het nieuwe datatype.
 
 ## Opdracht 7 - Omgaan met datums uit verschillende regionale instellingen.
 
 In de vorige opdracht mocht je ervan uitgaan dat alle rijen vanuit dezelfde regionale instelling werden aangeleverd.
 In deze opdracht leer je hoe je om moet gaan met data waar dat niet voor geldt.
 
-1. Start een nieuw Power BI rapport en lees **workbook L2O7.xlsx** uit **Lab 2** in als Excel workbook.
+1. Voeg bestand **L2O7.xlsx** toe als query, selecteer de **[Table]** van **Products** en hernoem het tot **Products (4)**.
 
     > Dit workbook bevat twee rijen, waarvan de **Release Date** het format uit twee verschillende regionale instellingen heeft.
 
-2. Selecteer de kolom **Release Date**, open op de **Transform** tab het dropdown menu van **Split Column** en selecteer **By Delimiter**. Het dialoog dat opent detecteert de "/" als scheidingsteken. Klik op OK.
+2. Selecteer de kolom **Release Date**, open op de **Transform** tab het dropdown menu van **Split Column** en selecteer **By Delimiter**. Selecteer in het dialoog dat opent de "/" als 
+ Custom scheidingsteken. Klik op OK.
 
     > De **Release Date** is nu in drie delen opgesplitst. Bij **Country** "US" staat kolom **Release Date.1** voor de maand en bij "UK" voor de dag.
     > In de volgende stappen ga je dit recht brijen aan de hand van een M formule en een Custom Column. 
@@ -297,9 +292,9 @@ In deze opdracht leer je hoe je om moet gaan met data waar dat niet voor geldt.
 
 4. Verander het datatype van de kolom naar **Date** en verwijder de drie **Release Date** kolommen.
 
-5. Rechtsklik om de **Products** query te dupliceren in het *Queries* paneel op **Products** en selecteer **Duplicate**.
+5. Rechtsklik om de **Products (4)** query te dupliceren in het *Queries* paneel op **Products** en selecteer **Duplicate**.
 
-6. Selecteer de nieuwe **Products (2)** query en verwijder in het *Applied Steps* paneel de laatste drie stappen (inclusief **Added Custom**).
+6. Selecteer de nieuwe **Products (5)** query en verwijder in het *Applied Steps* paneel de laatste drie stappen (inclusief **Added Custom**).
 
 7. Selecteer met Ctrl de drie **Release Date** kolommen als volgt: Eerst **Release Date.1**, dan **Release Date.2** en tenslotte **Release Date.3**. Selecteer op de **Add Column** tab **Merge Columns** en kies in de dialoog die opent de Custom separator "/" en noem de kolom "US Date".
 
@@ -311,41 +306,39 @@ In deze opdracht leer je hoe je om moet gaan met data waar dat niet voor geldt.
 
     ![Conditional column invoer](./img/L2O7-conditional-column.jpg)
 
-10. Selecteer de kolom **Date** en open op de tab **Transform** of **Add Column** het dropdown menu **Date**. Bekijk welke transformaties er mogelijk zijn op een goed geformatteerde datumkolom. Selecteer je meerdere datumkolommen dan kun je in het **Date** dropdown menu onder de **Add Column** tab ook kiezen voor **Subtract Days** om het verschil tussen twee datums uit te rekenen of de vroegste/laatste te bepalen.. 
- 
-11. Verander het datatype van de nieuwe kolom in "Date", verwijder de kolommen die nu overbodig zijn en laad de data naar je rapport.<br />
+10. Pas het datatype van de **Date** kolom aan naar **Date** en open op de tab **Transform** of **Add Column** het dropdown menu **Date**. Bekijk welke transformaties er mogelijk zijn op een goed geformatteerde datumkolom.
 
+    > Selecteer je meerdere datumkolommen dan kun je in het **Date** dropdown menu onder de **Add Column** tab ook kiezen voor **Subtract Days** om het verschil tussen twee datums uit te rekenen of de vroegste/laatste te bepalen.. 
+ 
 ## Opdracht 8 - Data splitsen in feiten en dimensies
 
 Datapreparatie is de sleutel tot het succes van data analyse. Voor effectieve analyse moet je vaak je tabellen splitsen om een één tabel te maken voor jouw transacties of feiten (verkoopregels, opnames) en aanvullende tabellen die je feiten ondersteunen (product, symptoom).
 In deze opdracht zet je een geaggregeerde tabel om in een sterschema. Het betreft data van World Wide Importers, een andere sample dataset van Microsoft.
 
-1. Start een nieuw Power BI rapport, lees worksheet **Sales_Order** uit workbook **L2O8.xlsx** uit **Lab 2** in als Excel workbook en open het in Power Query Editor.
-
-2. Hernoem de query tot "Sales Order - Base".
-
+1. Voeg bestand **L2O8.xlsx** toe als query, selecteer de **[Table]** van **Sales_Orders** en hernoem het tot **Sales Order - Base**.
+   
     > Het doel is om de originele tabel in tweeën te splitsen, op de juiste granulariteitsniveaus. 
     > De eerste tabel is de feitentabel voor **Sales Orders** met ID voor **Stock Item**.
     > De tweede tabel is de dimensietabel voor **Stock Items**.
 
-3. Rechtsklik op de query en selecteer **Reference**. Hernoem de nieuwe query tot "Stock Items".
+2. Rechtsklik op de query en selecteer **Reference**. Hernoem de nieuwe query tot "Stock Items".
 
-4. Met query **Stock Items** geselecteerd, kies onder de **Home** tab voor **Choose Columns**.
+3. Met query **Stock Items** geselecteerd, kies onder de **Home** tab voor **Choose Columns**.
 
-5. Vink in de dialoog die opent **(Select All Columns)** uit, selecteer vervolgens de kolommen **Stock ID**, **Stock Item** en **Stock Lead Time** en klik op OK.
+4. Vink in de dialoog die opent **(Select All Columns)** uit, selecteer vervolgens de kolommen **Stock ID**, **Stock Item** en **Stock Lead Time** en klik op OK.
 
-6. Selecteer de kolom **Stock ID** en open vervolgens op de **Home** tab het dropdown menu **Remove Rows** en kies voor **Remove Duplicates**.
+5. Selecteer de kolom **Stock ID** en open vervolgens op de **Home** tab het dropdown menu **Remove Rows** en kies voor **Remove Duplicates**.
 
     > Je hebt nu een dimensietabel met alle **Stock Items** met unieke voorkomens op elke rij.
     > Tijd om de feitentabel te maken.
 
-7. Rechtsklik op de query **Sales Order - Base** en selecteer **Reference**. Hernoem de nieuwe query tot "Sales Orders".
+6. Rechtsklik op de query **Sales Order - Base** en selecteer **Reference**. Hernoem de nieuwe query tot "Sales Orders".
 
-8. Met query **Sales Orders** geselecteerd, kies onder de **Home** tab voor **Choose Columns** en vink de kolommen **Stock Item** en **Stock Lead Time** uit.
+7. Met query **Sales Orders** geselecteerd, kies onder de **Home** tab voor **Choose Columns** en vink de kolommen **Stock Item** en **Stock Lead Time** uit.
 
-9. Stel de query **Sales Order - Base** zo in dat die niet geladen wordt.
+8. Stel de query **Sales Order - Base** zo in dat die niet geladen wordt.
 
-10. Laad de queries naar je rapport en check in het datamodel of de relatie moet worden toegevoegd.<br />
+9. Geef de twee queries een toepasselijke **Data destination**. <br />
 
 ## Opdracht 9 - Data splitsen in meerdere rijen
 
