@@ -42,7 +42,7 @@ In dit derde lab leer je Power Query in te zetten om data samen te voegen.
  
 8. Geef de dataflow een toepasselijke Data destination en sluit het af. <br />
 
-## Opdracht 2 - Samenvoegen van files uit een folder
+## Opdracht 2 - Samenvoegen van files uit een folder  (!! Werk in uitvoering !!)
 
 Voor een beperkt aantal queries met dezelfde structuur zijn deze handmatige stappen goed uit te voeren. 
 Dit wordt vervelend als je maandelijks een nieuwe file krijgt aangeleverd met bijvoorbeeld bijgewerkte budgetten.
@@ -66,53 +66,51 @@ Gelukkig heeft Power Query daar een oplossing voor.
     > Dit kun je simuleren door een van de files in de folder te kopiëren en te hernoemen tot **L3O2 - 2018.xlsx**.
     > Ververs nu de preview door in de **Home** tab **Refresh Preview** te selecteren en bekijk het resultaat. Mooi toch?<br />
 
-## Opdracht 3 - Samenvoegen van worksheets uit een excel workbook
+## Opdracht 3 - Samenvoegen van worksheets uit een excel workbook  (!! Werk in uitvoering !!)
 
 Een laatste voorbeeld van het massaal samenvoegen van bronnen is het samenvoegen van worksheets uit een excel workbook.
 Kun je daar vergelijkbaar met de folder import een query definiëren die dynamisch rekening houdt met nieuwe data?
 
-1. Start een nieuw Power BI rapport en selecteer op de **Home** tab **Get Data** en selecteer onder de categorie **File** de bron **Excel**.
+1. Maak een nieuwe dataflow, klik op **Get data** en selecteer **Excel workbook**. 
 
-1. Selecteer in de dialoog die opent workbook **L3O3 - Year per Worksheet.xlsx** uit **Lab 3** en klik op **Open**.
+2. Selecteer in de dialoog die opent workbook **L3O3 - Year per Worksheet.xlsx** en klik op **Open**.
 
     > Je kunt hier individuele worksheets selecteren, maar dit leidt tot handmatige handelingen op de lange termijn. 
     > Nieuwe worksheets worden dan niet automatisch opgepakt door de query.
 
-1. Rechtsklik op de folder **L3O3 - year per Worksheet.xlsx** en kies **Transform Data**.
+3. Rechtsklik op de folder **L3O3 - year per Worksheet.xlsx** en kies **Transform Data**.
 
-1. Hernoem de query tot "Products".
+4. Hernoem de query tot "Products".
 
     > In het *Preview Query* paneel zie je een tabel met de worksheets als rijen.
     > De inhoud van de worksheets zit in de **Data** kolom verhuld.
     > Heb je verstopte worksheets of ongerelateerde worksheets in jouw workbook dan kun je ze nu eruit filteren.
     > Vervolgens kun je de relevante set samenvoegen.
 
-1. Verwijder de kolommen **Item**, **Kind** en **Hidden**. 
+5. Verwijder de kolommen **Item**, **Kind** en **Hidden**. 
 
-1. Klik in de kolomkop van kolom **Data** op **Expand** (twee pijlen). Klik in de **Expand** dialoog die opent op OK. 
+6. Klik in de kolomkop van kolom **Data** op **Expand** (twee pijlen). Klik in de **Expand** dialoog die opent op OK. 
 
     > Als de data op elk worksheet uit tabelobjecten bestond in de workbook, zou je hier de kolomnamen kunnen selecteren in plaats van Column1, Column2 enz.
     > Aangezien dit in dit workbook niet het geval is, zul je de overbodige headerrijen moeten opschonen.
 
-1. Selecteer in de **home** tab de transformatie **Use First Row as Headers**.
+7. Selecteer in de **home** tab de transformatie **Use First Row as Headers**.
 
-1. Open de filter control in de kolomkop van kolom **Name** en verwijder het vinkje voor waarde "Name". Dit verwijdert de headerrijen van de overige jaren.
+8. Open de filter control in de kolomkop van kolom **Name** en verwijder het vinkje voor waarde "Name". Dit verwijdert de headerrijen van de overige jaren.
 
-1. Hernoem de eerste kolom tot **Release Year**.
-
-1. Laad de queries naar je rapport. 
+9. Hernoem de eerste kolom tot **Release Year**.
 
     > Tijd om de schaalbaarheid van jouw rapport te testen. We gaan de data voor een nieuw jaar simuleren.
 
-1. Open het onderliggende excelbestand, dupliceer worksheet **2017** en noem het "2018".
+10. Open het onderliggende excelbestand, dupliceer worksheet **2017** en noem het "2018". Upload het bestand naar jouw Lakehouse en overschrijf het origineel.
 
-1. Ga terug naar Power Query Editor en ververs de preview. Controleer of de nieuwe data goed is doorgekomen. 
+11. Ga terug naar jouw Dataflow en ververs de preview. Controleer of de nieuwe data goed is doorgekomen. 
 
-1. Open het onderliggende excelbestand opnieuw en voeg een nieuw eerste worksheet toe met data voor 2014.
+13. Open het onderliggende excelbestand opnieuw en voeg een nieuw eerste worksheet toe met data voor 2014. Upload het bestand naar jouw Lakehouse en overschrijf het origineel.
 
-1. Probeer de query in Power Query Editor opnieuw te verversen. Dit levert nu een foutmelding op: "The column '2015' of the table was not found". Verander voor een korte termijnoplossing van deze fout in de formule van de stap **Changed Type** in het *Applied Steps* paneel de waarde "2015" naar "2014".
+14. Probeer de query in Power Query Editor opnieuw te verversen. Dit levert nu een foutmelding op: "The column '2015' of the table was not found". Verander voor een korte termijnoplossing van deze fout in de formule van de stap **Changed Type** in het *Applied Steps* paneel de waarde "2015" naar "2014".
 
-1. Doe vervolgens hetzelfde in de stap **Renamed Columns**. De query geeft nu weer een foutloos resultaat. Laad tenslotte de data naar je rapport.
+15. Doe vervolgens hetzelfde in de stap **Renamed Columns**. De query geeft nu weer een foutloos resultaat.
 
     > Als je kan aannemen dat de toegevoegde data in jouw worksheets altijd nieuwe data betreft, dan gaat de bovenstaande methode goed.
     > Maar wat als dit niet per se het geval hoeft te zijn. Hoe kun je de bovenstaande query aanpassen zodat er niet steeds handmatige handelingen nodig zijn?<br />
@@ -125,9 +123,9 @@ De tekortkomingen van de vorige opdracht waren als volgt:
 * In stap 9 hernoemde je de kolom, wat ook resulteerde in een harde verwijzing naar "2015", wat ook kon leiden tot een verversingsfout. 
 In deze opdracht ga we deze valkuilen verhelpen.
 
-1. Open de **Products** query in Power Query Editor en verwijder de stap **Changed Type** in het *Applied Steps* paneel. 
+1. Selecteer de **Products** query en verwijder de stap **Changed Type** in het *Applied Steps* paneel. 
 
-1. Selecteer de **Renamed Columns** stap en vervang in de formule de waarde "2014" door `Table.ColumnNames(#"Filtered Rows"){0}`
+2. Selecteer de **Renamed Columns** stap en vervang in de formule de waarde "2014" door `Table.ColumnNames(#"Filtered Rows"){0}`
 
     > In plaats van een directe verwijzing naar de naam van de kolom, vertel je Power Query in M code de naam van de *eerste kolom* te wijzigen.
     > Hoe gebeurde dat precies? Door gebruik te maken van de functie **Table.ColumnNames**. Die geeft de kolomnamen terug van de tabel die als argument wordt meegegeven.
@@ -135,16 +133,16 @@ In deze opdracht ga we deze valkuilen verhelpen.
     > Om Power Query naam naar het eerste element in de kolomnamen te doen verwijzen, heb je een index toegevoegd in accolades. 
     > De indicering begint bij 0, zodat {0} naar het eerste element in de lijst verwijst.
 
-1. Om de creatie van de robuuste kolom te voltooien moet je nog de datatypen instellen:
+3. Om de creatie van de robuuste kolom te voltooien moet je nog de datatypen instellen:
     * Maak van de kolom **Release Year** een **Whole Number**.
     * Maak van de kolom **StandardCost** een **Decimal Number**.
     * Maak van de kolom **ListPrice** een **Decimal Number**.
 
-1. Toets de query door in het onderliggende excel bestand een nieuw eerste worksheet toe te voegen en de preview te verversen.<br />
+4. Toets de query door in het onderliggende excel bestand een nieuw eerste worksheet toe te voegen, het bestand te uploaden en de preview te verversen.<br />
 
 ## Table of Contents
 
-[Lab 1 - Een eerste blik op Power Query](../Lab1/LabInstructies1.md)\
+[Lab 1 - Een eerste blik op Dataflow Gen2](../Lab1/LabInstructies1.md)\
 [Lab 2 - Datapreparatie uitdagingen](../Lab2/LabInstructies2.md)\
 [Lab 3 - Data samenbrengen uit meerdere bronnen](../Lab3/LabInstructies3.md) (huidige module)\
 [Lab 4 - Combineren van afwijkende tabellen](../Lab4/LabInstructies4.md)
