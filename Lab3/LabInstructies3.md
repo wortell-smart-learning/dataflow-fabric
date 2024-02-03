@@ -38,7 +38,9 @@ In dit derde lab leer je Power Query in te zetten om data samen te voegen.
 
 6. Selecteer query **Products**, open de **Advanced Editor** en breidt de lijst van tabellen in de functie `Table.Combine` uit met de nieuwe queries. De nieuwe code ziet er dan als volgt uit: `Table.Combine({Source, Bikes, Clothing, Components})`.
 
-7. Sluit de Advanced Editor en check het resultaat van de querystap door te kijken of de vier categorieën beschikbaar zijn in de filter control in de kolomkop van de kolom **ParentProductCategoryName**.<br />
+7. Sluit de Advanced Editor en check het resultaat van de querystap door te kijken of de vier categorieën beschikbaar zijn in de filter control in de kolomkop van de kolom **ParentProductCategoryName**. Je kunt nu het doorladen voor de overige vier queries uitschakelen.
+ 
+8. Geef de dataflow een toepasselijke Data destination en sluit het af. <br />
 
 ## Opdracht 2 - Samenvoegen van files uit een folder
 
@@ -47,9 +49,7 @@ Dit wordt vervelend als je maandelijks een nieuwe file krijgt aangeleverd met bi
 Je wil hiervoor niet handmatig de query toevoegen en de lijst met gecombineerde queries bijwerken in Advanced Editor.
 Gelukkig heeft Power Query daar een oplossing voor.
 
-1. Pak de bestanden uit de zip **L3O2 - Products.zip** uit in de folder "C:\Data\L3\L3O2 - Products\".
-
-1. Start een nieuw Power BI rapport en selecteer op de **Home** tab **Get Data** en selecteer onder de categorie **File** de bron **Folder**.
+1. Start een nieuwe dataflow en selecteer op de **Home** tab **Get Data** en selecteer onder de categorie **File** de bron **Folder**.
 
 1. Navigeer naar de juiste folder met de bronbestanden voor **Lab 3**, klik op **Combine** en kies voor **Combine & transform Data**.
 
