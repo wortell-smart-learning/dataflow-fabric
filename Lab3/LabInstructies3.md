@@ -42,45 +42,45 @@ In dit derde lab leer je Power Query in te zetten om data samen te voegen.
  
 8. Geef de dataflow een toepasselijke Data destination en sluit het af. <br />
 
-## Opdracht 2 - Samenvoegen van files uit een folder  (!! Werk in uitvoering !!)
+## Opdracht 2 - Samenvoegen van files uit een folder
 
 Voor een beperkt aantal queries met dezelfde structuur zijn deze handmatige stappen goed uit te voeren. 
 Dit wordt vervelend als je maandelijks een nieuwe file krijgt aangeleverd met bijvoorbeeld bijgewerkte budgetten.
 Je wil hiervoor niet handmatig de query toevoegen en de lijst met gecombineerde queries bijwerken in Advanced Editor.
 Gelukkig heeft Power Query daar een oplossing voor.
 
-1. Start een nieuwe dataflow en selecteer op de **Home** tab **Get Data** en selecteer onder de categorie **File** de bron **Folder**.
+1. Ga naar **Workspace Jorik** en op en dataflow **L3O2**. Klik rechts bovenin het lint op **Export template** en sluit de dataflow af.
+  
+2. Start in jouw eigen workspace een nieuwe dataflow en selecteer midden onderin het canvas **Import from a Power Query template**. Navigeer naar het zojuist geëxporteerde template.
 
-1. Navigeer naar de juiste folder met de bronbestanden voor **Lab 3**, klik op **Combine** en kies voor **Combine & transform Data**.
+3. Als het geladen is en je ziet een melding over de credentials, kies dan voor **Configure connection** en in de dialoog op **Connect**. Als het goed is zie je dan data in de query preview.
 
-1. Selecteer in de **Combine File** dialoog die opent **Sheet1** en klik op OK.
+    > Wat als template is klaargezet is een connectie naar een Lakehouse folder, waarbij op basis van de eerste file in de folder een Sample file is gedefinieerd. Alle files in de folder worden volgens die sample file definitie ingelezen. 
 
     > In het *Query Preview* paneel zie je in de eerste kolom **Source.Name** de filenaam staan. 
-    > Klik op de filter control van de kolom om te verifiëren dat alle files uit de folder zijn opgenomen.
+    > Klik op de filter control van de kolom om te verifiëren dat alle drie de files uit de folder zijn opgenomen.
     > De filenaam kan interessant zijn om eventueel elementen uit af te leiden, zoals in dit geval de **Release Year**.
     > Negeer voor nu de extra elementen die zijn toegevoegd in het *Queries* paneel, zoals de objecten in de folder **Helper Queries**.
 
-1. Extraheer het jaartal uit **Source.Name** en hernoem het naar **Release Year**. Dit kan op verschillende manieren, bijvoorbeeld met **Replace Values** of **Split Column**. Als alternatief kun je ook **Column from Example** gebruiken op basis van **Source.Name**, de voorgestelde formule beoordelen en vervolgens **Source.Name** verwijderen.
+4. Extraheer het jaartal uit **Source.Name** en hernoem het naar **Release Year**. Dit kan op verschillende manieren, bijvoorbeeld met **Replace Values** of **Split Column**. Als alternatief kun je ook **Column from Example** gebruiken op basis van **Source.Name**, de voorgestelde formule beoordelen en vervolgens **Source.Name** verwijderen.
+
+5. Voeg een toepasselijke **Data destination** toe.
 
     > Wordt er een nieuwe file toegevoegd in de onderliggende folder, dan zal deze query die automatisch oppakken en hoeven er geen handmatige handelingen meer te worden uitgevoerd.
-    > Dit kun je simuleren door een van de files in de folder te kopiëren en te hernoemen tot **L3O2 - 2018.xlsx**.
+    > Dit kun je simuleren door een nieuwe file aan het lakehouse toe te voegen, **L3O2 - 2018.xlsx**.
     > Ververs nu de preview door in de **Home** tab **Refresh Preview** te selecteren en bekijk het resultaat. Mooi toch?<br />
 
-## Opdracht 3 - Samenvoegen van worksheets uit een excel workbook  (!! Werk in uitvoering !!)
+## Opdracht 3 - Samenvoegen van worksheets uit een excel workbook (!! Werk in uitvoering !!)
 
 Een laatste voorbeeld van het massaal samenvoegen van bronnen is het samenvoegen van worksheets uit een excel workbook.
 Kun je daar vergelijkbaar met de folder import een query definiëren die dynamisch rekening houdt met nieuwe data?
 
-1. Maak een nieuwe dataflow, klik op **Get data** en selecteer **Excel workbook**. 
-
-2. Selecteer in de dialoog die opent workbook **L3O3 - Year per Worksheet.xlsx** en klik op **Open**.
+1. Maak een nieuwe dataflow en lees bestand **L3O3 - Year per Worksheet.xlsx** in. 
 
     > Je kunt hier individuele worksheets selecteren, maar dit leidt tot handmatige handelingen op de lange termijn. 
     > Nieuwe worksheets worden dan niet automatisch opgepakt door de query.
 
-3. Rechtsklik op de folder **L3O3 - year per Worksheet.xlsx** en kies **Transform Data**.
-
-4. Hernoem de query tot "Products".
+2. Hernoem de query tot "Products".
 
     > In het *Preview Query* paneel zie je een tabel met de worksheets als rijen.
     > De inhoud van de worksheets zit in de **Data** kolom verhuld.
