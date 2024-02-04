@@ -70,7 +70,7 @@ Gelukkig heeft Power Query daar een oplossing voor.
     > Dit kun je simuleren door een nieuwe file aan het lakehouse toe te voegen, **L3O2 - 2018.xlsx**.
     > Ververs nu de preview door in de **Home** tab **Refresh Preview** te selecteren en bekijk het resultaat. Mooi toch?<br />
 
-## Opdracht 3 - Samenvoegen van worksheets uit een excel workbook (!! Werk in uitvoering !!)
+## Opdracht 3 - Samenvoegen van worksheets uit een excel workbook
 
 Een laatste voorbeeld van het massaal samenvoegen van bronnen is het samenvoegen van worksheets uit een excel workbook.
 Kun je daar vergelijkbaar met de folder import een query definiëren die dynamisch rekening houdt met nieuwe data?
