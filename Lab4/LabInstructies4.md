@@ -34,17 +34,13 @@ In dit lab leer je de oplossing voor deze issues.
     > Soms is dit echter niet haalbaar, bijvoorbeeld bij een groot aantal kolommen, of als je de opmaak van de aanlevering niet in de hand hebt. 
     > En als je een folder als input gebruikt, dan werkt handmatig hernoemen van kolommen niet meer, zoals je straks ziet.<br />
 
-## Opdracht 2 - Demonstratie van het symptoom van ontbrekende waarden (!! Werk in uitvoering !!)
+## Opdracht 2 - Demonstratie van het symptoom van ontbrekende waarden
 
 1. De excelbestanden in folder **L4O2 - Products** in het lakehouse bevatten verschillende kolomkoppen.
 
-2. Maak een nieuwe dataflow en selecteer op de **Home** tab **Get Data** en selecteer onder de categorie **File** de bron **Folder**.
+2. Maak uit **Workspace Jorik** een exported template van dataflow **L4O2**. Maak in jouw eigen workspace een nieuwe dataflow aan en importeer de template. Configureer zo nodig de connectie. 
 
-3. Navigeer naar de juiste folder met de bronbestanden voor **Lab 4**, klik op **Combine** en kies voor **Combine & transform Data**.
-
-4. Selecteer in de **Combine File** dialoog die opent **Sheet1** en klik op OK.
-
-    > De keuze die je maakt bepaalt de kolomnamen voor de gecombineerde query.
+    > De keuze van bestand voor de sample file bepaalt de kolomnamen voor de gecombineerde query.
 
 5. Scroll in het *Preview Query* paneel naar beneden tot de **Accessories** overgaan in de **Bikes**. Merk op dat de kolommen **Product**, **StandardCost** en **ListPrice** lege waarden bevatten.
 
@@ -57,7 +53,7 @@ In dit lab leer je de oplossing voor deze issues.
     > Deze aanpassingen worden dan doorgevoerd in de functie en toegepast op alle files. 
     > Als je files uit een folder combineert, zoek dan de **Transform Sample File** om aanpassingen op elke file te doen, voordat ze worden samengevoegd.<br />
 
-## Opdracht 3 - Aanname van gelijke volgorde en het generaliseren van de kolomkoppen (!! Werk in uitvoering !!)
+## Opdracht 3 - Aanname van gelijke volgorde en het generaliseren van de kolomkoppen
 
 Om het issue van de ontbrekende waarden op te lossen mag je aannemen dat de kolomvolgorde in de files hetzelfde is.
 Door deze aanname kun je generieke kolomkoppen gebruiken, zoals Column1, Column2 enz. en de kolomvolgorde gebruiken om de tabellen correct samen te voegen.
@@ -85,7 +81,7 @@ Door deze aanname kun je generieke kolomkoppen gebruiken, zoals Column1, Column2
 
     > Je kunt nu de query laden naar het rapport om de analyse te starten.<br />
 
-## Opdracht 4 - Eenvoudige normalisatie d.m.v. Table.TransformColumnNames (!! Werk in uitvoering !!)
+## Opdracht 4 - Eenvoudige normalisatie d.m.v. Table.TransformColumnNames
 
 Als je niet kunt aannemen dat de kolomvolgorde hetzelfde is voor al je bestanden, dan is normalisatie van kolomnamen een krachtige tool.
 Het is in principe niet meer dan tekstmanipulatie, maar in veel gevallen is dat voldoende om formats van kolomnamen consistent te maken.
@@ -127,7 +123,7 @@ In deze opdracht zul je beide formules gaan toepassen bij het samenvoegen van Ad
 
 8. Selecteer nu query **L4O4 - Products** en verwijder de laatste stap, **Changed Type**. De bestanden zijn nu correct samengevoegd en er zijn geen onverwachte ontbrekende waarden meer.<br />
 
-## Opdracht 5 - Transponeren met een conversietabel (!! Werk in uitvoering !!)
+## Opdracht 5 - Transponeren met een conversietabel
 
 Als eenvoudige tekstmanipulatie niet afdoende is om kolomnamen te consolideren, dan kun je gebruik maken van een conversietabel.
 Deze tabel vertaalt de afwijkende kolomnamen naar de correcte vorm. 
