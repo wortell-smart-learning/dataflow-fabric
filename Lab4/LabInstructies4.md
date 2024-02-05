@@ -183,7 +183,7 @@ Werk echter ook de overige opdrachten door om de voor- en nadelen te ondervinden
 
 Een betere methode om kolomnamen in een kolom te zetten en klaar te zetten voor de merge met de conversietabel is de **Unpivot** transformatie.
 
-1. Start met de tweede reference uit opdracht 5. Voeg een **Index Column** toe aan query **Products Sample**.
+1. Start met de tweede dataflow uit opdracht 5. Voeg een **Index Column** toe aan query **Products Sample**.
 
 2. Rechtsklik op de kolomkop van kolom **Index** en selecteer **Unpivot other columns**.
 
@@ -201,7 +201,7 @@ Een betere methode om kolomnamen in een kolom te zetten en klaar te zetten voor 
 
 7. Verwijder de **Index** kolom.
 
-8. Selecteer de query **Appended Products** en controleer het resultaat. Geeft het een foutmelding, verwijder dan de laatste stap, **Changed Type**.
+8. Selecteer de query **Appended Products** en controleer het resultaat.
 
     > Hoewel deze techniek op grote datasets kan worden toegepast, kan de **Pivot** techniek die gebruikt wordt om de tabel weer terug te draaien veel geheugen kosten. 
     > Power Query moet door de hele dataset gaan om unieke waarden in de kolom **Attribute** te zoeken en daar nieuwe kolommen van maken.
@@ -213,7 +213,7 @@ Een optimalere methode om kolomnamen te transformeren tot een kolom en voor te b
 Deze techniek is eenvoudig uit te voeren om een aantal specifieke bestanden te combineren, maar toepassing op een folder is lastiger, aangezien dat leunt op custom functies.
 Gebruik deze techniek alleen als de voorgaande technieken vanwege performanceproblemen geen optie zijn en als je het gebruik van M-technieken (volgende opdracht) wilt voorkomen.
 
-1. Start met de derde reference uit opdracht 5. Verwijder de laatste stap, **Promoted Headers**, in query **Products Sample**.
+1. Start met de derde dataflow uit opdracht 5. Verwijder de laatste stap, **Promoted Headers**, in query **Products Sample**.
 
 2. Rechtsklik op **Products Sample** in het *Queries* paneel en selecteer **Duplicate**. Selecteer dan op de **Home** tab onder **Keep Rows** de transformatie **Keep Top Rows**. Voer in de dialoog die opent de waarde "1" in en klik op OK.
 
@@ -246,7 +246,7 @@ Gebruik deze techniek alleen als de voorgaande technieken vanwege performancepro
     > Het verwijderen van de laatste stap is belangrijk, omdat de Size kolom in bestand Accessories alleen nummers bevat, waardoor Power Query het datatype interpreteert als Whole Number. 
     > Voor andere bestanden zijn alfanumerieke Sizes echter valide waarden, wat zou leiden tot errors in de kolom **Size**. 
 
-12. Selecteer de query **Appended Products** en controleer het resultaat. Geeft het een foutmelding, verwijder dan de laatste stap, **Changed Type**.
+12. Selecteer de query **Appended Products** en controleer het resultaat.
 
     > Als je door de preview scrolt en bij **Bikes** aankomt, valt het op dat de waarden van kolommen **Name** en **Product Number** verwisseld zijn. 
     > De normalisatie is dus niet correct uitgevoerd, maar wat is er gebeurt?
@@ -282,7 +282,7 @@ In een eerdere opdracht heb je al de M functie `Table.TransformColumnNames` toeg
 Nu zul je een custom functie creëren die de normalisatie toepast.
 Om dit te ondersteunen ga je eerst de opmaak van de conversietabel aanpassen met **Transpose**, om **Source** in de kolomkoppen te zetten en **Target** als waarden in de eerste rij.
 
-1. Start met de vierde reference uit opdracht 5, selecteer query **Header_Conversion**, transponeer het en gebruik de eerste rij als kolomkoppen.
+1. Start met de vierde dataflow uit opdracht 5, selecteer query **Header_Conversion**, transponeer het en gebruik de eerste rij als kolomkoppen.
 
 2. Verwijder de laatste stap, **Changed Type**. 
 
