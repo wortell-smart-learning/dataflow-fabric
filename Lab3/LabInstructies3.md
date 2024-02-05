@@ -62,7 +62,7 @@ Gelukkig heeft Power Query daar een oplossing voor.
     > De filenaam kan interessant zijn om eventueel elementen uit af te leiden, zoals in dit geval de **Release Year**.
     > Negeer voor nu de extra elementen die zijn toegevoegd in het *Queries* paneel, zoals de objecten in de folder **Helper Queries**.
 
-4. Extraheer het jaartal uit **Source.Name** en hernoem het naar **Release Year**. Dit kan op verschillende manieren, bijvoorbeeld met **Replace Values** of **Split Column**. Als alternatief kun je ook **Column from Example** gebruiken op basis van **Source.Name**, de voorgestelde formule beoordelen en vervolgens **Source.Name** verwijderen.
+4. Extraheer het jaartal uit **L3O2 - 2015.csv** en hernoem het naar **Release Year**. Dit kan op verschillende manieren, bijvoorbeeld met **Replace Values** of **Split Column**. Als alternatief kun je ook **Column from Example** gebruiken op basis van **Source.Name**, de voorgestelde formule beoordelen en vervolgens **Source.Name** verwijderen.
 
 5. Voeg een toepasselijke **Data destination** toe.
 
