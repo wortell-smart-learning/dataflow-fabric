@@ -95,11 +95,7 @@ In deze opdracht zul je beide formules gaan toepassen bij het samenvoegen van Ad
 
     > De bestanden staan klaar in de folder **L4O4 - Products**. Deze bestanden lijken op de bestanden uit opdracht 2, met kleine verschillen. De kolomkoppen kunnen geüniformeerd worden door te kapitaliseren en underscores te vervangen. Daarnaast zijn in **Bikes** de eerste twee kolommen omgewisseld.
 
-1. Maak een nieuwe dataflow en selecteer op de **Home** tab **Get Data** en selecteer onder de categorie **File** de bron **Folder**.
-
-2. Navigeer naar de juiste folder, klik op **Combine** en kies voor **Combine & transform Data**.
-
-3. Selecteer in de **Combine File** dialoog die opent één van de opties in het dropdown menu **Sheet1** en klik op OK.
+1. Maak uit **Workspace Jorik** een exported template van dataflow **L4O4**. Maak in jouw eigen workspace een nieuwe dataflow aan en importeer de template. Configureer zo nodig de connectie. 
 
     > Check dat de resulterende query inderdaad leidt onder het symptoom van ontbrekende waarden.
 
