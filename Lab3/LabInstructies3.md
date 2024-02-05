@@ -55,7 +55,7 @@ Gelukkig heeft Power Query daar een oplossing voor.
 
 3. Als het geladen is en je ziet een melding over de credentials, kies dan voor **Configure connection** en in de dialoog op **Connect**. Als het goed is zie je dan data in de query preview.
 
-    > Wat als template is klaargezet is een connectie naar een Lakehouse folder, waarbij op basis van de eerste file in de folder een Sample file is gedefinieerd. Alle files in de folder worden volgens die sample file definitie ingelezen. 
+    > Wat als template is klaargezet is een connectie naar een Lakehouse folder, waarbij op basis van de eerste file in de folder een Sample file is gedefinieerd. Alle files in de folder worden volgens die sample file definitie ingelezen (zie [documentatie](https://learn.microsoft.com/en-us/power-query/custom-function)). 
 
     > In het *Query Preview* paneel zie je in de eerste kolom **Source.Name** de filenaam staan. 
     > Klik op de filter control van de kolom om te verifiëren dat alle drie de files uit de folder zijn opgenomen.
