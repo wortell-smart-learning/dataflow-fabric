@@ -59,24 +59,23 @@ De excelbestanden in folder **L4O2 - Products** in het lakehouse bevatten versch
 Om het issue van de ontbrekende waarden op te lossen mag je aannemen dat de kolomvolgorde in de files hetzelfde is.
 Door deze aanname kun je generieke kolomkoppen gebruiken, zoals Column1, Column2 enz. en de kolomvolgorde gebruiken om de tabellen correct samen te voegen.
 
-1. Selecteer in het *Queries* paneel de **Transform Sample File**, hernoem het tot "Products Sample" en verwijder de laatste stap **Promoted Headers**.
+1. Hernoem de **Transform Sample File** tot "Products Sample" en verwijder de laatste stap **Promoted Headers**.
    
     > Door de generieke kolomnamen kun je de correcte data in de samengevoegde tabel zien.
+    > Nu heeft de samengevoegde tabel geen ontbrekende waarden meer.
 
-2. Selecteer de query **L4O2 - Products** en verwijder de laatste stap: **Changed Type**. Nu heeft de samengevoegde tabel geen ontbrekende waarden meer.
-
-3. Je kunt nu de eerste rij als kolomkoppen gebruiken (**Use First Row as Headers**).
+2. Selecteer de query **L4O2 - Products** en controleer of de eerste datarij nu de kolomkoppen bevat. Zo niet, sluit dan de dataflow af en open het opnieuw. Je kunt nu de eerste rij als kolomkoppen gebruiken (**Use First Row as Headers**).
 
     > De kolomkoppen van de andere tabellen staan nog steeds als rijen in de data. Eerder heb je die eruit gefilterd, maar hadden ze dezelfde naam.
     > Nu is dat niet het geval. Je kunt de rij met kolomkoppen eenvoudiger herkennen door voor het samenvoegen een index aan de data toe te voegen.
 
-4. Selecteer de query **Products Sample**. Selecteer op de **Add Column** tab de transformatie **Index Column**. Voor elke file zal de rij met kolomkoppen de waarde 0 hebben in deze index.
+3. Selecteer de query **Products Sample**. Selecteer op de **Add Column** tab de transformatie **Index Column**. Voor elke file zal de rij met kolomkoppen de waarde 0 hebben in deze index.
 
-5. Ga terug naar de query **L4O2 - Products** en filter de rijen met kolomkoppen uit de dataset.
+4. Ga terug naar de query **L4O2 - Products** en filter de rijen met kolomkoppen uit de dataset.
  
-6. Verwijder de eerste en laatste kolom. Maak de query robuuster door in de formule van deze **Removed Columns** stap de harde verwijzing naar `"L4O2 - Accessories.xlsx"` te vervangen door `Table.ColumnNames(#"Filtered Rows"){0}`.
+5. Verwijder de eerste en laatste kolom. Maak de query robuuster door in de formule van deze **Removed Columns** stap de harde verwijzing naar `"L4O2 - Accessories.xlsx"` te vervangen door `Table.ColumnNames(#"Filtered rows"){0}`.
 
-    > Je kunt nu de query laden naar het rapport om de analyse te starten.<br />
+    > Je kunt er nu een toepasselijke **Data destination** aan koppelen.<br />
 
 ## Opdracht 4 - Eenvoudige normalisatie d.m.v. Table.TransformColumnNames
 
