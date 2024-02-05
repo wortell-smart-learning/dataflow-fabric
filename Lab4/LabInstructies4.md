@@ -64,7 +64,7 @@ Door deze aanname kun je generieke kolomkoppen gebruiken, zoals Column1, Column2
     > Door de generieke kolomnamen kun je de correcte data in de samengevoegde tabel zien.
     > Nu heeft de samengevoegde tabel geen ontbrekende waarden meer.
 
-2. Selecteer de query **L4O2 - Products** en controleer of de eerste datarij nu de kolomkoppen bevat. Zo niet, sluit dan de dataflow af en open het opnieuw. Je kunt nu de eerste rij als kolomkoppen gebruiken (**Use First Row as Headers**).
+2. Selecteer de query **L4O2 - Products** en controleer of de eerste datarij nu de kolomkoppen bevat. Zo niet, klik dan op **Refresh**. Je kunt nu de eerste rij als kolomkoppen gebruiken (**Use First Row as Headers**).
 
     > De kolomkoppen van de andere tabellen staan nog steeds als rijen in de data. Eerder heb je die eruit gefilterd, maar hadden ze dezelfde naam.
     > Nu is dat niet het geval. Je kunt de rij met kolomkoppen eenvoudiger herkennen door voor het samenvoegen een index aan de data toe te voegen.
@@ -98,22 +98,22 @@ In deze opdracht zul je beide formules gaan toepassen bij het samenvoegen van Ad
 
     > Check dat de resulterende query inderdaad leidt onder het symptoom van ontbrekende waarden.
 
-4. Selecteer de **Transform Sample File** en hernoem het tot "Products Sample". Klik dan op het Fx icoon in de *Formula bar*.
+2. Selecteer de **Transform Sample File**. Klik op het Fx icoon in de *Formula bar*.
 
-    > Er wordt een nieuwe stap toegevoegd, **Custom1**, die de volgende formule laat zien: `= #"Promoted Headers"`. 
+    > Er wordt een nieuwe stap toegevoegd, **Custom**, die de volgende formule laat zien: `#"Promoted Headers"`. 
     > Dit is de variabele die verwijst naar de output van de vorige stap, **Promoted Headers**.
     > Omdat deze variabele de tabel met afwijkende kolomnamen teruggeeft, kun je de functie `Table.TransformColumnNames` erop toepassen met argument `Text.Lower` om kleine letters van de kolomnamen te maken.
 
-5. Wijzig de formule in: `= Table.TransformColumnNames(#"Promoted Headers", Text.Lower)` en druk op Enter. Merk op dat de kolomnamen er nu in kleine letters staan. 
+3. Wijzig de formule in: `Table.TransformColumnNames(#"Promoted headers", Text.Lower)` en druk op Enter. Merk op dat de kolomnamen er nu in kleine letters staan. 
 
     > Als kolomnamen beginnend met hoofdletters jouw voorkeur hebben, vervang `Text.Lower` dan door `Text.Proper`.
     > Je kunt deze transformatie ook toepassen als de kolomnamen van jouw huidige datasets consistent zijn, om problemen in de toekomst te voorkomen.
 
-6. Klik opnieuw op het Fx icoon in de *Formula bar* en wijzig de formule van stap **Custom2** naar `= Table.TransformColumnNames(#"Custom1", each Replacer.ReplaceText(_,"_"," "))`.
+4. Klik opnieuw op het Fx icoon in de *Formula bar* en wijzig de formule van stap **Custom 1** naar `Table.TransformColumnNames(#"Custom", each Replacer.ReplaceText(_,"_"," "))`.
 
-7. Klik op Enter en merk op dat de kolomnamen nu spaties bevatten in plaats van underscores. Ze zien er nu gebruiksvriendelijker uit.
+5. Klik op Enter en merk op dat de kolomnamen nu spaties bevatten in plaats van underscores. Ze zien er nu gebruiksvriendelijker uit.
 
-8. Selecteer nu query **L4O4 - Products** en verwijder de laatste stap, **Changed Type**. De bestanden zijn nu correct samengevoegd en er zijn geen onverwachte ontbrekende waarden meer.<br />
+6. Selecteer nu query **L4O4 - Products**. De bestanden zijn nu correct samengevoegd en er zijn geen onverwachte ontbrekende waarden meer.<br />
 
 ## Opdracht 5 - Transponeren met een conversietabel
 
@@ -132,22 +132,20 @@ Dit vergt wat diepere kennis van M, vandaar dat je eerst drie andere UI-gedreven
 Ben je al comfortabel met M code, dan zal je de laatste opdracht waarschijnlijk de beste uitwerking vinden. 
 Werk echter ook de overige opdrachten door om de voor- en nadelen te ondervinden.
 
-1. Maak een nieuwe dataflow en lees workbook **L4O5 - Conversion Table.xlsx** uit **Lab 4** in als Excel workbook (selecteer **Load**).
+1. Maak uit **Workspace Jorik** een exported template van dataflow **L4O5**. Maak in jouw eigen workspace een nieuwe dataflow aan en importeer de template. Configureer zo nodig de connectie. 
 
-2. Rechtsklik op de query en zet **Enable load** uit. Klik nu op **Close & Apply**.
+2. Importeer **L4O5 - Conversion Table.xlsx** als **Header_Conversion**, selecteer de **[Table]** van **Header_Conversion en zet **Enable staging** uit.
 
-3. Importeer de product tabellen als folder uit **L4O5 - Products**.
+3. Selecteer de **Transform Sample File** en hernoem het tot "Products Sample". Hernoem query **L4O5 - Products** tot "Appended Products".
 
-4. Selecteer de **Transform Sample File** en hernoem het tot "Products Sample". Hernoem query **L4O5 - Products** tot "Appended Products".
-
-5. Maak nu vier references naar deze query, als basis voor het vervolg van opdracht 5 en de volgende opdrachten 6, 7 en 8. 
+4. Exporteer deze basis als template en maak vier nieuwe dataflows op basis van deze template, als basis voor het vervolg van opdracht 5 en de volgende opdrachten 6, 7 en 8. 
 
     > De eerste techniek voor normaliseren van kolomnamen is de **Transpose** transformatie op de **Transform** tab.
     > Als je waarden van kolomnamen wilt manipuleren is dat makkelijker als ze verticaal in een kolom staan. Hier komt **Transpose** van pas.
     > De originele kolomnamen worden echter niet in stand gehouden na de transformatie. 
     > Je zal die eerst moeten terugzetten naar de eerste rij, voor het transponeren.
 
-6. Selecteer de eerste reference. 
+6. Selecteer de eerste dataflow. 
 
 7. Selecteer de query **Products Sample** en verwijder de laatste stap, **Promoted Headers**. De headers staan nu in de eerste rij.
 
@@ -159,9 +157,9 @@ Werk echter ook de overige opdrachten door om de voor- en nadelen te ondervinden
 
     > **Header_Conversion** is nu toegevoegd aan de **Product Sample** query met als waarden een tabelobject. 
 
-10. Klik op de twee pijltjes in de kolomkop. Daarmee kun je een selectie maken uit het tabelobject. Verwijder het vinkje voor **Source** en klik op OK.
+10. Klik op de twee pijltjes in de kolomkop. Daarmee kun je een selectie maken uit het tabelobject. Verwijder het vinkje voor **Source** en klik op OK. Hernoem de kolom tot **Header_Conversion.Target**.
 
-    > Nieuwe kolom **Header_Conversion.Target** bevat nu waarden waar de originele kolommen afwijken en is leeg als de kolomnamen kloppen.
+    > Nieuwe kolom **Target** bevat nu waarden waar de originele kolommen afwijken en is leeg als de kolomnamen kloppen.
     > Met een conditionele kolom kun je beiden samenvoegen.
 
 11. Voeg een **Conditional Column** toe (tab **Add Column**) en configureer het als volgt:
@@ -176,7 +174,7 @@ Werk echter ook de overige opdrachten door om de voor- en nadelen te ondervinden
 
 14. **Transpose** de query en **Use First Row as Headers**.
 
-15. Selecteer de query **Appended Products** en controleer het resultaat. Geeft het een foutmelding, verwijder dan de laatste stap, **Changed Type**.
+15. Selecteer de query **Appended Products** en controleer het resultaat. 
 
     > Deze methode werkt voor kleine datasets. Voor tabellen met meer dan 15.000 rijen kan het zorgen voor trage imports, hoog memory-gebruik of zelfs errors.
     > Voor grotere sets heb je een andere aanpak nodig.<br />
